@@ -20,7 +20,7 @@ Thanks to React, I was able to avoid re-writing the same HTML blocks, and used l
 
 Overall, it was an enjoyable experience, and I'm looking forward to my next projects with React.js!
 
-# Demo Linka & GitHub
+# Demo Link & GitHub
 
 I wish you a pleasant experience visiting the landing:
 
