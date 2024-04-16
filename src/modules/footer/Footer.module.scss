@@ -1,0 +1,117 @@
+.footer {
+  margin-top: 110px;
+
+  display: flex;
+
+  @include on-mobile {
+    justify-content: center;
+  }
+
+  @include on-tablet {
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    margin-top: 150px;
+  }
+
+  &__left-section, &__right-section {
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__left-section {
+    max-width: 21vw;
+
+    @include on-tablet {
+      // reduced it a bit to make the main section to look centered
+      max-width: 145px;
+    }
+
+    @include on-desktop {
+      max-width: 170px;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+
+    gap: 40px;
+
+    @include on-tablet {
+      gap: 31px;
+    }
+
+    @include on-desktop {
+      gap: 74px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    gap: 85px;
+
+    @include on-tablet {
+      gap: 80px;
+    }
+
+    @include on-desktop {
+      gap: 70px;
+    }
+  }
+
+  &__icon {
+    @for $icon from 1 through 3 {
+      &--#{$icon} {
+        background-image: url(../../icons/footer--#{$icon}.svg);
+      }
+    }
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    height: 20px;
+    width: 20px;
+
+    &:hover {
+      @include on-hover-icon;
+    }
+
+    @include on-desktop {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  &__logo {
+    margin: 0;
+
+    @include textTypeFull(36px, 54px, $mainFontFamily, 400, #000000);
+    text-align: center;
+  }
+
+  &__right-section {
+    max-width: 16.6vw;
+  }
+
+  &__title, &__info {
+    margin: 0;
+  }
+
+  &__title {
+    @include textTypeFull(24px, 24px, $mainFontFamily, 400, #000000);
+    letter-spacing: 0.155em;
+  }
+
+  &__info {
+    @include textTypeFull(16px, 24px, $secondaryFontFamily, 400, #000000);
+  }
+}

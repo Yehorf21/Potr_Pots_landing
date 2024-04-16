@@ -1,0 +1,74 @@
+.menu {
+  opacity: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  background-color: $turqoise;
+  height: 100vh;
+  width: 72vw;
+
+  transition: all .5s ease-in-out;
+  pointer-events: none;
+  transform: translateX(100%);
+
+  @include on-desktop {
+    display: none;
+  }
+
+  &:target {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 5;
+
+    transform: translateX(0);
+  }
+
+  &__links {
+    margin: 150px 0 0 89px;
+
+    @include on-tablet {
+      margin: 200px 0 0 150px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    right: 30px;
+    bottom: 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // for better visuals I decided to use vw instead of fixed sizes
+    &-text {
+      @include textTypeFull(3vw, 4.5vw, $secondaryFontFamily, 400, $greyLight);
+
+      transform: rotate(-90deg);
+    }
+
+    &-line {
+      margin-top: 5px;
+
+      height: 10vw;
+      width: 1px;
+      background-color: $greyLight;
+    }
+
+    &-icon {
+      margin-top: 18px;
+
+      width: 3vw;
+      height: 3vw;
+
+      background-image: url(../../icons/menu--closer.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+}

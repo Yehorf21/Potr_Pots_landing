@@ -1,0 +1,158 @@
+.potr-team {
+  position: relative;
+
+  &__title {
+    position: relative;
+    margin-block: 0 25px;
+
+    @include textType(58px, 69.6px, 0.155em);
+    font-weight: 300;
+
+    &::after {
+      content: "";
+
+      // positioning values are approximate
+      position: absolute;
+      left: -30px;
+      bottom: -600px;
+
+      width: 400px;
+      height: 300px;
+      z-index: -1;
+
+      background-image: url(../../icons/rectangle-potr-team.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    @include on-tablet {
+      margin-bottom: 0;
+
+      &::after {
+        height: 200px;
+
+        left: -34px;
+        bottom: -300px;
+      }
+    }
+
+    @include on-desktop {
+      &::after {
+        width: 310px;
+        height: 435px;
+
+        left: -135px;
+        bottom: -525px;
+      }
+    }
+  }
+
+  &__name {
+    margin: 0;
+    position: absolute;
+
+    @include textType(231.88px, 278.26px, 0.155em);
+    font-weight: 300;
+
+    // I picked the values myself to match the desired design
+    &--top {
+      top: 100px;
+      left: -10%;
+    }
+
+    &--bottom {
+      bottom: -230px;
+      right: -55px;
+    }
+
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-desktop {
+      @include textType(288px, 345.6px, 0.155em);
+
+      &--top {
+        top: 80px;
+        left: -74px;
+      }
+
+      &--bottom {
+        bottom: -300px;
+        right: -200px;
+      }
+    }
+  }
+
+  &__card {
+    @include on-tablet {
+      margin-top: 150px; // approximate
+      @include pageGrid;
+      gap: 47px;
+    }
+
+    @include on-desktop {
+      gap: 57px;
+      margin-top: 130px;
+    }
+  }
+
+  &__img {
+    background-image: url(../../../public/images/default/potr-team--bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    width: 100vw;
+    height: 75vw;
+
+    @include on-mobile {
+      @include cancelPadding;
+    }
+
+    @include on-tablet {
+      width: 100%;
+      height: 33vw;
+
+      grid-column: 4 / -1;
+
+      &::after {
+        left: -300px;
+        bottom: -400px;
+      }
+    }
+
+    @include on-desktop {
+      grid-column: 5 / -1;
+      height: 35vw;
+
+      max-height: 507.75px;
+    }
+  }
+
+  &__description {
+    margin-block: 30px 0;
+
+    @include textTypeFull(16px, 24px, $secondaryFontFamily, 200, $greyDark);
+
+    @include on-mobile {
+      // fot better look on bigger screens
+      max-width: 450px;
+      align-self: center;
+    }
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+
+      // to position it lower
+      margin-top: 53px;
+
+      order: -1;
+    }
+
+    @include on-desktop {
+      margin-top: 200px;
+
+      grid-column: 1 / 5;
+    }
+  }
+}

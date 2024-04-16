@@ -1,0 +1,237 @@
+.header {
+  @include pageGrid;
+  position: relative;
+
+  @include on-tablet {
+    &::before {
+      content: "";
+      position: absolute;
+
+      background-image: url(../../icons/rectangle-header.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      // used negative values to move it closer to the edges of the page (since the position is relative to the header)
+      top: -80px;
+      left: -35px;
+
+      width: 100%;
+      height: 55vw;
+
+      z-index: -1;
+    }
+  }
+
+  @include on-desktop {
+    &::before {
+      left: -150px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      margin-top: 40px;
+      @include pageGrid;
+
+      flex-direction: row;
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      margin-top: 70px;
+
+      grid-column: span 12;
+    }
+  }
+
+  &__bg {
+    display: flex;
+
+    @include on-tablet {
+      justify-self: right;
+      grid-column: 4 / -1;
+
+      width: 100%;
+      height: 39vw;
+    }
+
+    @include on-desktop {
+      grid-column: 8 / -1;
+      height: 500px;
+    }
+  }
+
+  &__bg-img {
+    background-image: url(../../../public/images/default/header-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    background-position: center;
+    width: 100vw;
+    height: 100vw;
+
+    @include on-mobile {
+      @include cancelPadding;
+    }
+
+    @include on-tablet {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include on-desktop {
+      background-image: url(../../../public/images/header__bg--desktop.png);
+    }
+  }
+
+  &__title {
+    margin-block: 25px 30px;
+    grid-column: span 2;
+
+    @include textType(36px, 43.2px, 0.155em);
+    font-weight: 300;
+    color: $turqoise;
+
+    @include on-tablet {
+      margin: 0;
+
+      position: absolute;
+      grid-column: 1 / 6;
+      order: -1;
+
+      @include textType(64px, 64px, 0.155em);
+    }
+
+    // not to overlap the price on smaller tablets
+    @media (min-width: 768px) {
+      grid-column: 1 / 5;
+    }
+
+    @include on-desktop {
+      // approximate
+      left: 70px;
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__price {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 2;
+
+    height: 100px;
+
+    @include on-tablet {
+      grid-column: 3 / 5;
+      // to make it closer to the image and title
+      margin-top: -50px;
+    }
+
+    // to make it closer to the top on bigger screens
+    @media (min-width: 860px) {
+      margin-top: -12vw;
+    }
+
+    @include on-desktop {
+      margin-top: -15vw;
+      grid-column: 5 / 7;
+    }
+
+    &-price {
+      margin: 0;
+
+      @include textTypeFull(26px, 35.52px, $secondaryFontFamily, 700, $main);
+    }
+
+    &-description {
+      margin: 0;
+
+      @include textTypeFull(14px, 21px, $secondaryFontFamily, 300, $greyDark);
+      max-width: 140px;
+    }
+  }
+
+  &__button {
+    grid-column: span 2;
+    // for some reason, it wouldn't look right with just 100%
+    width: calc(100% - 20px);
+
+    @include on-mobile {
+      margin-top: 20px;
+      // for better look on bigger smartphones
+      gap: 10vw;
+
+      height: 15vw;
+    }
+
+    @include on-tablet {
+      // for better look on different devices
+      margin-top: (calc(-6vw + 50px));
+
+      grid-column: 2 / 4;
+    }
+
+    @include on-desktop {
+      margin-top: -8vw;
+      grid-column: 4 / 7;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // to prevent the horizontal scrolling
+    height: 20px;
+    width: 180px;
+
+    // approximate (arrow was overlapping the text, so I had to apply a bigger gap here)
+    gap: 25px;
+
+    // the value used are approximate
+    position: absolute;
+    right: -105px;
+    bottom: 90px;
+
+    transform: rotate(90deg);
+    text-decoration: none;
+
+    @include on-tablet {
+      left: -80px;
+      bottom: 65px;
+    }
+
+    &-text {
+      @include textTypeFull(12px, 18px, $secondaryFontFamily, 400, $turqoise);
+    }
+
+    &-arrow {
+      height: 44px;
+      width: 10px;
+
+      background-image: url(../../icons/arrow-down--turqoise.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__side-text {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+
+      right: -70px;
+      bottom: -240px;
+
+      height: 14px;
+      width: 144px;
+    }
+  }
+}

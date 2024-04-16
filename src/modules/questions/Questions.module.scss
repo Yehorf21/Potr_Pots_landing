@@ -1,0 +1,191 @@
+.questions {
+  padding-inline: 30px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 55px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 130px;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    gap: 229px;
+  }
+
+  &::after {
+    content: "";
+
+    // positioning values are approximate
+    position: absolute;
+    top: -50px;
+    left: -30px;
+
+    width: 100vw;
+    height: 1000px;
+    z-index: -1;
+
+    // this one suits better
+    background-image: url(../../icons/rectangle-potr-team.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  @include on-tablet {
+    margin-bottom: 0;
+
+    &::after {
+      background-image: url(../../icons/rectangle--questions--tablet.png);
+      width: 100vw;
+      max-height: 700px;
+
+      left: -34px;
+    }
+  }
+
+  @include on-desktop {
+    &::after {
+      width: calc(100vw - 135px);
+      max-width: 1440px;
+
+      background-position: center bottom;
+
+      left: -135px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      // to position the title and the rest of the elements correctly
+      min-width: 45.5vw;
+    }
+
+    @include on-desktop {
+      min-width: unset;
+
+      max-width: 26vw;
+      gap: 30px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__title, &__pre-form-text {
+    margin: 0;
+  }
+
+  &__title {
+    @include textTypeFull(36px, 54px, $mainFontFamily, 400, #000000);
+    letter-spacing: 0.155em;
+  }
+
+  &__pre-form-text {
+    @include textTypeFull(16px, 24px, $secondaryFontFamily, 400, #000000);
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    // for "message us" text
+    @include textTypeFull(24px, 36px, $secondaryFontFamily, 400, #000000);
+  }
+
+  &__input {
+    padding-inline: 6px;
+    height: 29px;
+    width: 100%;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #0000004D;
+
+    // to replace the default autofill styles
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus {
+      -webkit-text-fill-color: $greyDark;;
+      -webkit-box-shadow: 0 0 0 40rem transparent inset;
+    }
+
+    &, &::placeholder {
+      @include textTypeFull(16px, 24px, $secondaryFontFamily, 400, $greyDark);
+    }
+
+    &:first-child {
+      // to make the distance between the "Message us" and the first input be 25px
+      margin-top: 5px;
+
+      @include on-tablet {
+        margin-top: 20px;
+      }
+    }
+
+    &--textarea {
+      resize: none;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $turqoise;
+    }
+  }
+
+  &__submit {
+    // to make the distance between the textarea and the button be 30px
+    margin-top: 10px;
+
+    @include on-tablet {
+      margin-top: 30px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    max-width: fit-content;
+
+    &-title, &-link {
+      margin: 0;
+    }
+
+    &-title {
+      @include textTypeFull(24px, 36px, $secondaryFontFamily, 400, #00000063);
+    }
+
+    &-link {
+      @include textTypeFull(16px, 24px, $secondaryFontFamily, 400, #000000);
+
+      text-decoration: none;
+      cursor: pointer;
+      transition: all .3s ease-in-out .1s;
+
+      &:hover {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+

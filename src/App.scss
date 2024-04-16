@@ -1,1 +1,20 @@
-// 
+//
+@import './utils/mixins';
+@import './utils/variables';
+@import './utils/extra';
+@import './index.scss';
+
+@import './modules/header/Header.module';
+@import './modules/nav/Nav.module';
+@import './modules/menu/Menu.module';
+
+@import './modules/for-whom/ForWhom.module';
+@import './modules/features/Features.module';
+@import './modules/potr-team/PotrTeam.module';
+@import './modules/materials/Materials.module';
+@import './modules/potr-size/PotrSize.module';
+@import './modules/benefits/Benefits.module';
+@import './modules/questions/Questions.module';
+
+@import './modules/footer/Footer.module';
+

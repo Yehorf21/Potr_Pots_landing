@@ -1,0 +1,100 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 52px; // to make it smaller (approximate)
+
+  &__title {
+    margin: 0;
+
+    @include textType(36px, 43.2px, 0.06em);
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+
+    height: 48px;
+    width: 48px;
+
+    cursor: pointer;
+
+    @include on-desktop {
+      align-items: center;
+    }
+
+    &--burger, &--cart {
+      height: 32px;
+      width: 32px;
+
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &--burger {
+      background-image: url(../../icons/menu--opener.svg);
+    }
+
+    &--cart {
+      background-image: url(../../icons/nav--cart.svg);
+
+      &:hover {
+        @include on-hover-icon;
+      }
+    }
+  }
+}
+
+.links {
+  margin: 0;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  list-style-type: none;
+  padding: 0;
+
+  @include on-tablet {
+    gap: 30px;
+  }
+
+  @include on-desktop {
+    align-items: center;
+    flex-direction: row;
+    gap: 60px;
+  }
+}
+
+.item {
+  cursor: pointer;
+
+  // added fixed width so that on hover the links wouldn't get pushed left
+  @include on-desktop {
+    width: 69px;
+
+    &:last-child {
+      width: 90px
+    }
+  }
+}
+
+.link {
+  // for better visuals I decided to use vw instead of fixed sizes
+  @include textTypeFull(4vw, 6vw, $secondaryFontFamily, 300, $greyLight);
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+
+  @include on-desktop {
+    @include textTypeFull(16px, 24px, $secondaryFontFamily, 300, $greyDark);
+
+
+    &:hover {
+      color: $main;
+      font-weight: 500;
+    }
+  }
+}

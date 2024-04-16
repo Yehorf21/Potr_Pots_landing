@@ -1,0 +1,273 @@
+.materials {
+  position: relative;
+
+  @include on-tablet {
+    // so that the names from above wouldn't overlap the title
+    margin-top: 170px;
+  }
+
+  @include on-desktop {
+    margin-top: 250px;
+  }
+
+  &__title {
+    margin: 0;
+
+    @include textType(58px, 69.6px, 0.155em);
+    color: $turqoise;
+
+    @include on-tablet {
+      @include textType(80px, 96px, 0.155em);
+      font-weight: 400;
+
+      // on tablets the title needs to have the same height for the text next to it to be shown properly
+      @media (max-width: 1200px) {
+        max-width: 532px;
+      }
+    }
+
+    @include on-desktop {
+      @include textType(138.81px, 166.57px, 0.155em);
+    }
+  }
+
+  &__text {
+    @include on-mobile {
+      display: none
+    }
+
+    position: absolute;
+    right: 0;
+    top: 80px;
+
+    // I specified the width to make the text wrapper take up less space on smaller devices in order not to overlap the title
+    width: 30vw;
+    max-width: 340px;
+    z-index: -5;
+
+    @include on-desktop {
+      top: 170px;
+
+      max-width: 470px;
+      z-index: 1;
+    }
+
+    &-title {
+      @include textTypeFull(20px, 30px, $secondaryFontFamily, 700, $greyDark);
+    }
+
+    &-text {
+      @include textTypeFull(16px, 24px, $secondaryFontFamily, 400, $greyDark);
+    }
+  }
+
+  &__bg {
+    @include cancelPadding;
+    // to position it beneath the text without making it absolute
+    position: relative;
+
+    background-image: url(../../../public/images/default/materials-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    width: 100vw;
+    height: 80vw;
+
+    z-index: -1;
+
+    // added positioning to better reflect the design requirements
+    @include on-mobile {
+      top: -70px;
+    }
+
+    @include on-tablet {
+      top: 30px;
+    }
+
+    @include on-desktop {
+      top: -150px;
+
+      max-width: 1440px;
+      max-height: 1081.41px;
+    }
+  }
+
+  &__card {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+
+    width: 100%;
+    top: 60%;
+
+    @include on-tablet {
+      width: 320px;
+
+      // I decided to use a variable here not to repeat the same code for smaller tablets
+      --top-indent: 0%;
+
+      &--1 {
+        // I used approximate values in percentages for better responsiveness
+        top: calc(60% + var(--top-indent));
+        left: -10%;
+      }
+
+      &--2 {
+        top: calc(50% + var(--top-indent));
+        left: 20%;
+      }
+
+      &--3 {
+        top: calc(65% + var(--top-indent));
+        left: 35%;
+      }
+
+      &--4 {
+        top: calc(57% + var(--top-indent));
+        left: 45%;
+      }
+
+      &--5 {
+        top: 40%;
+        left: 70%;
+      }
+
+      @media (max-width: 1000px) {
+        // moves the card a bit lower on smaller tablets to better reflect the design
+        --top-indent: 10%;
+      }
+    }
+  }
+
+  &__clicker {
+    @include on-mobile {
+      display: none;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include textTypeFull(30px, 35px, $secondaryFontFamily, 200, #E0E0E0);
+
+    height: 51px;
+    width: 51px;
+    background-color: $red;
+
+    transition: all .3s ease-in-out .1s;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: #242323BF;
+    }
+
+    // to make it easier to click on them on bigger screens
+    @media (min-width: 860px) {
+      height: 65px;
+      width: 65px;
+
+      font-size: 35px;
+      line-height: 40px;
+    }
+  }
+
+  &__description-card {
+    position: relative;
+
+    // to align the indexes in the center
+    display: flex;
+    justify-content: center;
+  }
+
+  &__description {
+    position: relative;
+    padding: 28px 45px 65px;
+
+    max-width: 303px;
+
+    background-color: #00000069;
+    @include textTypeFull(16px, 24px, $secondaryFontFamily, 400, $greyLight);
+
+    z-index: 5;
+
+    @include on-tablet {
+      padding: 35px 45px;
+
+      // so that the whole card could be seen
+      &--1 {
+        left: 25%;
+      }
+
+      &--5 {
+        right: 35%;
+      }
+    }
+  }
+
+  &__indexes {
+    position: absolute;
+    bottom: 37px;
+
+    display: flex;
+    gap: 7px;
+    z-index: 7;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__index {
+    height: 7px;
+    width: 7px;
+
+    border: 1px solid $greyLight;
+    transform: rotate(45deg);
+
+    background-color: #fff;
+
+    &--selected {
+      border: 1px solid $greyLight;
+      background-color: #000000;
+    }
+  }
+
+  &__side-text {
+    @include on-mobile {
+      display: none;
+    }
+
+    &--right {
+      right: -85px;
+      top: 80px;
+    }
+
+    &--left {
+      left: -95px;
+      top: 250px;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+}
+
+.invisible {
+  display: none;
+}
+
+.selected {
+  background-color: #242323BF;
+}
+
+.strong {
+  @media (max-width: 1200px) {
+    font-weight: 700;
+  }
+}

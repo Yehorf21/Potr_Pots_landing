@@ -1,0 +1,165 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 25px;
+
+  width: 260px;
+  height: 48px;
+  border: 1px solid transparent;
+
+  text-transform: uppercase;
+
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  &:disabled {
+    opacity: .5;
+    cursor: unset;
+  }
+
+  &--yellow {
+    background-color: $yellow;
+    border-color: $yellow;
+  }
+
+  &--yellow-turqoise {
+    width: 238px;
+    background-color: $yellow;
+
+    @include on-tablet {
+      background-color: transparent;
+      border-color: $turqoise;
+
+      &:hover {
+        opacity: 1;
+        background-color: $turqoise;
+      }
+    }
+  }
+
+  &--turqoise {
+    background-color: $turqoise;
+    border-color: $turqoise;
+  }
+
+  &-text, &-arrow {
+    transition: all .3s ease-in-out;
+  }
+
+  &-text {
+    margin: 0;
+
+    @include textTypeFull(14px, 21px, $secondaryFontFamily, 600, #121212);
+    text-transform: uppercase;
+
+    &--white {
+      color: #ffffff;
+      }
+    }
+
+  &-arrow {
+    position: relative;
+    top: 1.5px; // to make it be more in the center
+
+    width: 27.31px;
+    height: 10px;
+
+    background-image: url(../icons/arrow-right--black.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &--white {
+      background-image: url(../icons/arrow-right--white.svg);
+    }
+  }
+}
+
+.side-text {
+  position: absolute;
+  transform: rotate(90deg);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+  height: 14px;
+  width: 144px;
+
+  &__text {
+    @include textTypeFull(12px, 14.4px, $mainFontFamily, 400, #828282);
+    letter-spacing: 0.22em;
+
+    &--for-whom {
+      @include on-mobile {
+        order: 2;
+      }
+    }
+  }
+
+  &__line {
+    width: 65px;
+    height: 1px;
+
+    background-color: #828282;
+  }
+}
+
+.outlined {
+  -webkit-text-stroke: 0.68px #03839E;
+  color: transparent;
+}
+
+.unavailable-feature {
+  @include on-desktop {
+    position: relative;
+
+    &:hover {
+      z-index: 555;
+      opacity: 1;
+
+        &::after {
+          content: "This feature might be added later on";
+
+          position: absolute;
+          top: 75px;
+          transform: translateX(50%, 50%);
+
+          padding: 28px 45px 65px;
+          width: 120px;
+          height: auto;
+
+          background-color: #00000069;
+          @include textTypeFull(16px, 24px, $secondaryFontFamily, 400, $greyLight);
+
+          text-transform: none;
+        }
+    }
+  }
+
+  &--left {
+    &:hover {
+      &::after {
+        left: -70px;
+      }
+    }
+  }
+}
+
+@keyframes showUp {
+  from {
+    opacity: .5;
+    transform: translateY(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

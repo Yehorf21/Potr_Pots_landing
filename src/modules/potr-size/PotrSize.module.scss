@@ -1,0 +1,168 @@
+// positioning is approximately accurate (as I changed a few values for better convenience and overall good look on different devices)
+
+.potr-size {
+  @include on-tablet {
+    // nullify the default margin for all sections (check index.scss)
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    // to make the distance between this block and the "materials" block smaller
+    margin-top: -150px;
+  }
+
+  &__title {
+    @include textTypeFull(36px, 54px, $mainFontFamily, 400, #000000);
+    letter-spacing: 0.155em;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+
+    @include on-desktop {
+      margin-top: 60px;
+
+      @include pageGrid;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 30px;
+
+    @include on-tablet {
+      margin-top: 38px;
+
+      flex-direction: row;
+
+      // for more convenience I used grid on tablet devices to position all the elements
+      @media (max-width: 1200px) {
+        @include pageGrid;
+        gap: 25px;
+      }
+    }
+
+    @include on-desktop {
+      margin: 0;
+
+      grid-column: 4 / -1;
+      grid-row: 1;
+
+    }
+  }
+
+  &__description {
+    margin: 0;
+
+    @include textTypeFull(16px, 24px, $secondaryFontFamily, 300, $greyDark);
+
+    &--bottom {
+      position: relative;
+      margin-top: 15px;
+
+      &::before {
+        content: "*";
+
+        position: absolute;
+        left: -10px;
+        top: -3px;
+
+        height: 20px;
+        width: 7px;
+      }
+    }
+    /*
+      I used grid-row to position all the elements in one row without having to change my markup depending on the device
+    */
+
+    @include on-desktop {
+      &--top {
+        margin-right: 47px;
+        position: relative;
+
+        grid-column: 1 / 4;
+        grid-row: 1;
+
+
+        &::after {
+          content: "";
+
+          position: absolute;
+          top: 0;
+          right: -20px;
+
+          height: 257px;
+          width: 1px;
+
+          background-color: #D8D8D8;
+        }
+      }
+
+      &--bottom {
+        // I added the top margin to make it move to the bottom point like the design requested
+        margin-top: 325px;
+
+        grid-column: 1 / 6;
+        grid-row: 1;
+      }
+    }
+  }
+
+  &__texts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      grid-column: 1 / 3;
+      gap: 50px;
+    }
+
+    @include on-desktop {
+      // to reflect the design more precisely
+      max-width: 270px;
+    }
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-title {
+      margin: 0;
+
+      @include textTypeFull(18px, 18px, $mainFontFamily, 400, #000000);
+      letter-spacing: 0.155em;
+    }
+  }
+
+  &__img {
+    @include on-mobile {
+      margin-bottom: 30px;
+      @include cancelPadding;
+
+      width: 100vw;
+      height: 81vw;
+      order: -1;
+    }
+
+    width: 100%;
+    height: 50vw;
+    grid-column: 3 / -1;
+
+    background-image: url(../../../public/images/default/potr-size.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include on-desktop {
+      margin-left: 70px;
+
+      height: 30vw;
+      max-height: 427px;
+    }
+  }
+}
