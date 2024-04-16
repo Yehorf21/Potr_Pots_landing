@@ -15,30 +15,6 @@ import { actions as vieportActions } from './store/reducers/viewport';
 import { Menu } from './modules/menu';
 import { Nav } from './modules/nav';
 
-/* Things to do:
-
-  Additional:
-
-  - Add side links
-
-
-  Styles:
-
-    Header + +
-    Potr team + +
-    Questions + +
-    Benefits + +
-    Features + +
-    Footer + +
-    For whom + +
-    Materials + +
-    Menu + +
-    Nav + +
-    Potr size + +
-
-
-*/
-
 function App() {
   const dispatch = useAppDispatch();
 
